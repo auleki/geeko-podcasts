@@ -82,7 +82,7 @@ class App extends React.Component {
   
 
     return casts.map((cast, index) => (
-      <div key={index}>
+      <div className="casts" key={index}>
         <h3>{cast.title}</h3>
         <p>{cast.description}</p>
       </div>
@@ -102,7 +102,7 @@ class App extends React.Component {
 
     return (
       <div className="pod-page">
-        <h2>Our Podcasts</h2>
+        <h2>Create New Post</h2>
         <form onSubmit={this.handleSubmit}>
           <div className='form-input'>
             <input 
@@ -123,19 +123,23 @@ class App extends React.Component {
             />
           </div>
           <div className='form-input'>
-            <button type="submit">Save Podcast</button>
+            <button className="button" type="submit">Save Podcast</button>
           </div>
             {/* <p>{this.state.title} : {this.state.description}</p> */}
         </form>
 
         <div className="all-casts">
           <div className="title">
-            <h1>All Podcasts</h1>
+            <h2>All Posts</h2>
           </div>
           <div className="podcasts">
             {this.displayPodcasts(this.state.posts)}
           </div>
 
+        </div>
+
+        <div className="footer">
+          <p>Created by <a target="_blank" href="https://wahabgiwa.dev">Wahab Giwa</a></p>
         </div>
 
 
