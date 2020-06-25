@@ -17,7 +17,7 @@ const options = {
 
 // const PodcastModel = require('./models/Podcast');
 
-mongoose.connect(url, options )
+mongoose.connect(process.env.MONGODB_URI || url, options )
 
 
 mongoose.connection.on('connected', () => {
@@ -27,6 +27,10 @@ mongoose.connection.on('connected', () => {
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static('client/build'));
+}
 
 // HTTP request logger 
 app.use(cors());

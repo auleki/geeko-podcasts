@@ -4,7 +4,11 @@
   "main": "server.js",
   "scripts": {
     "client": "cd client && yarn start",
-    "dev": "concurrently -n 'server,client' -c 'blue,green' \"nodemon server.js\" \" yarn client \""
+    "dev": "concurrently -n 'server,client' -c 'blue,green' \"nodemon server.js\" \" yarn client \"",
+    "build": "cd client && yarn build",
+    "install-client": "cd client && yarn install",
+    "heroku-postbuild": "yarn install-client && yarn build",
+    "start": "node server.js"
   },
   "license": "MIT",
   "dependencies": {
