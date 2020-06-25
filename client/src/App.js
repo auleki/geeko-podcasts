@@ -2,16 +2,22 @@ import React from 'react';
 import './App.css';
 import axios from 'axios';
 
+
 class App extends React.Component {
 
   state = {
     title: '',
     description: '',
-    posts: []
+    posts: [],
+    loading: false
   }
 
   componentDidMount = () => {
+    this.setState({ loading: true });
     this.getPodcast()
+    this.setState({ loading: false });
+
+
     // console.log(this.state.posts);
   }
 
@@ -56,6 +62,7 @@ class App extends React.Component {
     }).then(() => {
       console.log('Data has been sent to the server');
       this.resetUserInputs();
+      this.getPodcast();
     })
       .catch(() => {
         console.log('Error occured with sending post');
@@ -69,12 +76,32 @@ class App extends React.Component {
     })
   }
 
+  displayPodcasts = (casts) => {
+    if (!casts.length) return null;
+
+  
+
+    return casts.map((cast, index) => (
+      <div key={index}>
+        <h3>{cast.title}</h3>
+        <p>{cast.description}</p>
+      </div>
+    ))
+        
+    
+
+    
+  }
+
+
+
+
   render() {
 
     // console.log('State: ' + this.state );
 
     return (
-      <div>
+      <div className="pod-page">
         <h2>Our Podcasts</h2>
         <form onSubmit={this.handleSubmit}>
           <div className='form-input'>
@@ -98,8 +125,22 @@ class App extends React.Component {
           <div className='form-input'>
             <button type="submit">Save Podcast</button>
           </div>
-            <p>{this.state.title} : {this.state.description}</p>
+            {/* <p>{this.state.title} : {this.state.description}</p> */}
         </form>
+
+        <div className="all-casts">
+          <div className="title">
+            <h1>All Podcasts</h1>
+          </div>
+          <div className="podcasts">
+            {this.displayPodcasts(this.state.posts)}
+          </div>
+
+        </div>
+
+
+
+
       </div>
     )
   }
