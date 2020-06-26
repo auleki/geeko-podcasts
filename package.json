@@ -5,10 +5,10 @@
   "scripts": {
     "client": "cd client && yarn start",
     "dev": "concurrently -n 'server,client' -c 'blue,green' \"nodemon server.js\" \" yarn client \"",
-    "build": "cd client && yarn build",
+    "build": "env-cmd .env cd client && yarn build",
     "install-client": "cd client && yarn install",
     "heroku-postbuild": "yarn install-client && yarn build",
-    "start": "node server.js"
+    "start": "env-cmd .env node server.js"
   },
   "license": "MIT",
   "dependencies": {
@@ -20,6 +20,7 @@
     "morgan": "^1.10.0"
   },
   "devDependencies": {
+    "env-cmd": "^10.1.0",
     "nodemon": "^2.0.4"
   }
 }
