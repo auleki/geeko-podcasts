@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 8000;
 const apiRoutes = require('./routes/api');
 
 
-// const url = 'mongodb+srv://admin:admin12345@mern-deploy-02fwd.mongodb.net/test?retryWrites=true&w=majority'
+
 const options = {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -22,14 +22,6 @@ const options = {
 
 mongoose.connect(process.env.MONGODB_URI, options )
 
-// shontan lagbaja
-// fuck the society
-// prefix
-// Ellen Johnson Sirleaf 2006
-// women are not sidelined
-// they are not looked down upon
-// there are MRS who take pride in their name
-// society is not governed by men
 
 
 mongoose.connection.on('connected', () => {
