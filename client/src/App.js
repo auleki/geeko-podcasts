@@ -139,7 +139,7 @@ class App extends React.Component {
         </div>
 
         <div className="footer">
-          <p>Created by <a target="_blank" href="https://wahabgiwa.dev">Wahab Giwa</a></p>
+          <p>Created by <a rel="noopener noreferrer" target="_blank" href="https://wahabgiwa.dev">Wahab Giwa</a></p>
         </div>
 
 

@@ -4,18 +4,24 @@
   "main": "server.js",
   "scripts": {
     "client": "cd client && yarn start",
-    "dev": "concurrently -n 'server,client' -c 'blue,green' \"nodemon server.js\" \" yarn client \""
+    "dev": "concurrently -n 'server,client' -c 'blue,green' \"nodemon server.js\" \" yarn client \"",
+    "build": "env-cmd .env cd client && yarn build",
+    "install-client": "cd client && yarn install",
+    "heroku-postbuild": "yarn install-client && yarn build",
+    "start": "env-cmd .env node server.js"
   },
   "license": "MIT",
   "dependencies": {
     "axios": "^0.19.2",
     "concurrently": "^5.2.0",
     "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mongoose": "^5.9.16",
     "morgan": "^1.10.0"
   },
   "devDependencies": {
+    "env-cmd": "^10.1.0",
     "nodemon": "^2.0.4"
   }
 }
